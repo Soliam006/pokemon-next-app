@@ -40,23 +40,6 @@ export default function PokemonSearch() {
 
 const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
-useEffect(() => {
-  const handleResize = () => {
-    if (typeof window !== 'undefined') {
-      setWindowWidth(window.innerWidth);
-    }
-  };
-
-  if (typeof window !== 'undefined') {
-    window.addEventListener('resize', handleResize);
-  }
-
-  return () => {
-    if (typeof window !== 'undefined') {
-      window.removeEventListener('resize', handleResize);
-    }
-  };
-}, []);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault()
@@ -104,7 +87,7 @@ useEffect(() => {
                       <motion.button
                           key={suggestion}
                           initial={{scale: 0}}
-                          animate={{scale: windowWidth <= 640 ? 1.1 : 1.4}} // Cambia el valor de la escala basado en el tamaño de la ventana
+                          animate={{scale: 1.1}}
                           exit={{scale: 0}}
                           transition={{delay: index * 0.05}}
                           onClick={() => handleSuggestionClick(suggestion)}

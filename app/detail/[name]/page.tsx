@@ -39,7 +39,7 @@ export default async function PokemonDetail({ params }: { params: { name: string
   return (
       <div className="w-full p-4 bg-sky-800">
         <Link href="/" className="text-white hover:text-sky-400  ">&larr; Back to list</Link>
-        <div className="flex flex-col ml:flex-row mt-5">
+        <div className="flex flex-col lg:flex-row mt-5">
           <Card className="">
             <CardHeader>
               <CardTitle className="text-3xl font-bold capitalize">{pokemon.name}</CardTitle>
