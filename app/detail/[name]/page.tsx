@@ -39,10 +39,7 @@ export default async function PokemonDetail({ params }: { params: { name: string
 
   return (
       <div className="w-full p-4 bg-sky-800">
-        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Poppins:wght@400;700&display=swap"
-            rel="stylesheet"></link>
-
-          <Link href="/" className="text-white hover:text-sky-400  ">&larr; Back to list</Link>
+        <Link href="/" className="text-white hover:text-sky-400  ">&larr; Back to list</Link>
         <div className="flex flex-col md:flex-row mt-5">
           <Card className="">
             <CardHeader>
@@ -50,11 +47,11 @@ export default async function PokemonDetail({ params }: { params: { name: string
             </CardHeader>
             <CardContent className="grid md:grid-cols-2 gap-6">
               <div>
-                    <PokemonImage
-                        defaultImage={pokemon.sprites.other['official-artwork'].front_default}
-                        shinyImage={pokemon.sprites.other['official-artwork'].front_shiny}
-                        name={pokemon.name}
-                      />
+                <PokemonImage
+                    defaultImage={pokemon.sprites.other['official-artwork'].front_default}
+                    shinyImage={pokemon.sprites.other['official-artwork'].front_shiny}
+                    name={pokemon.name}
+                />
               </div>
               <div className="space-y-4">
                 <div>
@@ -75,7 +72,7 @@ export default async function PokemonDetail({ params }: { params: { name: string
                 <div>
                   <h2 className="text-xl font-semibold mb-2">Types</h2>
                   <div className="flex gap-2">
-                    {pokemon.types.map((type: {type: {name: string}}) => (
+                    {pokemon.types.map((type: { type: { name: string } }) => (
                         <span key={type.type.name} className="px-2 py-1 bg-gray-200 rounded-full capitalize">
                     {type.type.name}
                   </span>
@@ -85,7 +82,7 @@ export default async function PokemonDetail({ params }: { params: { name: string
                 <div>
                   <h2 className="text-xl font-semibold mb-2">Abilities</h2>
                   <ul className="list-disc list-inside">
-                    {pokemon.abilities.map((ability: {ability: {name: string}}) => (
+                    {pokemon.abilities.map((ability: { ability: { name: string } }) => (
                         <li key={ability.ability.name} className="capitalize">{ability.ability.name}</li>
                     ))}
                   </ul>
@@ -99,7 +96,7 @@ export default async function PokemonDetail({ params }: { params: { name: string
             </CardHeader>
             <CardContent>
               <div className="flex flex-wrap gap-2">
-                {pokemon.moves.slice(0, 20).map((move: {move: {name: string}}) => (
+                {pokemon.moves.slice(0, 20).map((move: { move: { name: string } }) => (
                     <span key={move.move.name} className="px-2 py-1 bg-gray-200 rounded-full capitalize">
                 {move.move.name}
               </span>
@@ -109,16 +106,16 @@ export default async function PokemonDetail({ params }: { params: { name: string
           </Card>
         </div>
 
-          <Card className="mt-6 ">
-            <CardHeader>
-              <CardTitle className="text-2xl font-bold">Evolution Chain</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="flex flex-wrap gap-4 items-center">
-                {renderEvolutionChain(evolution_chain.chain)}
-              </div>
-            </CardContent>
-          </Card>
+        <Card className="mt-6 ">
+          <CardHeader>
+            <CardTitle className="text-2xl font-bold">Evolution Chain</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="flex flex-wrap gap-4 items-center">
+              {renderEvolutionChain(evolution_chain.chain)}
+            </div>
+          </CardContent>
+        </Card>
       </div>
   )
 }
@@ -129,7 +126,7 @@ function renderEvolutionChain(chain: any) {
 
   while (currentPokemon) {
     result.push(
-      <Link href={`/detail/${currentPokemon.species.name}`} key={currentPokemon.species.name} className="text-center">
+        <Link href={`/detail/${currentPokemon.species.name}`} key={currentPokemon.species.name} className="text-center">
         <div className="capitalize font-semibold">{currentPokemon.species.name}</div>
         {currentPokemon.evolution_details[0]?.min_level && (
           <div className="text-sm text-gray-500">

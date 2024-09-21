@@ -6,9 +6,6 @@ import Image from 'next/image'
 export default function PokemonApp() {
   return (
       <PokemonProvider>
-          <link
-              href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Poppins:wght@400;700&display=swap"
-              rel="stylesheet"></link>
           <div className="mx-10 p-4">
 
               <div className="text-center  items-center ">
