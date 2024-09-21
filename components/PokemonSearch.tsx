@@ -41,9 +41,21 @@ export default function PokemonSearch() {
 const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
 useEffect(() => {
-  const handleResize = () => setWindowWidth(window.innerWidth);
-  window.addEventListener('resize', handleResize);
-  return () => window.removeEventListener('resize', handleResize);
+  const handleResize = () => {
+    if (typeof window !== 'undefined') {
+      setWindowWidth(window.innerWidth);
+    }
+  };
+
+  if (typeof window !== 'undefined') {
+    window.addEventListener('resize', handleResize);
+  }
+
+  return () => {
+    if (typeof window !== 'undefined') {
+      window.removeEventListener('resize', handleResize);
+    }
+  };
 }, []);
 
   const handleSearch = (e: React.FormEvent) => {
