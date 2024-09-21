@@ -37,10 +37,6 @@ export default function PokemonSearch() {
     }
   }, [localSearchTerm, allPokemon])
 
-
-const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
-
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault()
     setSearchTerm(localSearchTerm)
