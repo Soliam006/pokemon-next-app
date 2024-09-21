@@ -1,3 +1,18 @@
+interface Species {
+  name: string;
+}
+
+interface EvolutionDetails {
+  min_level?: number;
+}
+
+export interface Chain {
+  species: Species;
+  evolution_details: EvolutionDetails[];
+  evolves_to: Chain[];
+}
+
+
 export interface Type {
   slot: number;
   type: {

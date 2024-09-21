@@ -2,13 +2,12 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Progress } from "@/components/ui/progress"
-import { getPokemonDetails, getPokemonSpecies } from '@/app/services/pokemonApi'
+import {Chain, Pokemon, getPokemonDetails, getPokemonSpecies} from '@/app/services/pokemonApi'
 
 import { GiSpikedShield , GiCrossedSwords , GiDervishSwords, GiSwordsEmblem, GiRun   } from "react-icons/gi";
 import { FaHeart } from "react-icons/fa";
-import PokemonImage from "@/components/PokemonImage";
 
-import { Pokemon } from "@/app/services/pokemonApi"
+import PokemonImage from "@/components/PokemonImage";
 
 type StatName = 'hp' | 'attack' | 'special-attack' | 'special-defense' | 'defense'| 'speed';
 
@@ -40,7 +39,7 @@ export default async function PokemonDetail({ params }: { params: { name: string
   return (
       <div className="w-full p-4 bg-sky-800">
         <Link href="/" className="text-white hover:text-sky-400  ">&larr; Back to list</Link>
-        <div className="flex flex-col md:flex-row mt-5">
+        <div className="flex flex-col ml:flex-row mt-5">
           <Card className="">
             <CardHeader>
               <CardTitle className="text-3xl font-bold capitalize">{pokemon.name}</CardTitle>
@@ -90,7 +89,7 @@ export default async function PokemonDetail({ params }: { params: { name: string
               </div>
             </CardContent>
           </Card>
-          <Card className="flex-1 mt-5 md:mt-0 md:ml-10">
+          <Card className="flex-1 mt-5 lg:mt-0 lg:ml-10">
             <CardHeader>
               <CardTitle className="text-2xl font-bold">Moves</CardTitle>
             </CardHeader>
@@ -120,9 +119,10 @@ export default async function PokemonDetail({ params }: { params: { name: string
   )
 }
 
-function renderEvolutionChain(chain: any) {
+function renderEvolutionChain(chain: Chain) {
   const result = []
   let currentPokemon = chain
+  console.log("Block CHain", chain)
 
   while (currentPokemon) {
     result.push(
